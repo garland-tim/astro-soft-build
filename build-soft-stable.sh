@@ -50,7 +50,8 @@ sudo make install || { echo "Stellarsolver failed"; exit 1; }
 cd "$ROOTDIR"
 [ ! -d "kstars" ] && git clone https://invent.kde.org/education/kstars.git
 cd kstars
-git checkout 
+git fetch origin
+git checkout $KSTARS_COMMIT
 [ ! -d ../build-kstars ] && { cmake -B ../build-kstars -DBUILD_TESTING=Off ../kstars -DCMAKE_BUILD_TYPE=Release || { echo "KStars failed"; exit 1; } }
 cd ../build-kstars
 make -j 4 || { echo "KStars failed"; exit 1; }
