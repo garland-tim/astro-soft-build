@@ -1,0 +1,7 @@
+Scripts to build na install INDI and KStars
+
+First run install-dependencies.sh to install all libraries needed to build.
+Then run build-soft-stable.sh or build-soft-latest.sh
+
+Beware that only one version can be installed at a time and during installation
+it overwrite previosly installed version.
