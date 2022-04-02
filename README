@@ -1,7 +1,14 @@
 Scripts to build na install INDI and KStars
 
-First run install-dependencies.sh to install all libraries needed to build.
-Then run build-soft-stable.sh or build-soft-latest.sh
+First clone this repository with command `git clone https://gitea.nouspiro.space/nou/astro-soft-build.git`
+Later when there is update you can run `git pull origin` to get latest version of script.
+
+Before first build install dependencies run `./install-dependencies.sh` to install all libraries needed to build.
+This need to be run only once.
+Then run `./build-soft-stable.sh` or `./build-soft-latest.sh`
+
+Stable install last stable version and it is recomended to use. Latest will build bleeding edge version from repository
+which sometimes can fail to build or can be unstable.
 
 Beware that only one version can be installed at a time and during installation
 it overwrite previosly installed version.
