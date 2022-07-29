@@ -3,10 +3,10 @@
 export CFLAGS="-march=native -w -Wno-psabi -D_FILE_OFFSET_BITS=64"
 export CXXFLAGS="-march=native -w -Wno-psabi -D_FILE_OFFSET_BITS=64"
 
-INDI_COMMIT="46d8e3b0d3ff6662daa89b6f6499caa7cb2fe9b1"
-INDI_3RD_COMMIT="c9f706d74b14bce2f15f34e0dd3d11c17c64f4ee"
-STELLAR_COMMIT="cdaefb03d4dfdf9237abd9507bf46cebf8647738"
-KSTARS_COMMIT="60240363d80cb9e572e5da8fceebd10c0224c91e"
+INDI_COMMIT="830ababe2a07eea63e67a02b347cef50ae65a7d2"
+INDI_3RD_COMMIT="96d445332ee2af4c625b83072b21b097e9376749"
+STELLAR_COMMIT="9013092ce5791514cf48a32b0b73923fe879eabf"
+KSTARS_COMMIT="stable-3.6.0"
 
 ROOTDIR="$HOME/astro-soft-stable"
 
@@ -53,7 +53,7 @@ cd "$ROOTDIR"
 [ ! -d "kstars" ] && git clone https://invent.kde.org/education/kstars.git
 cd kstars
 git fetch origin
-git checkout $KSTARS_COMMIT
+git checkout --detach $KSTARS_COMMIT
 [ ! -d ../build-kstars ] && { cmake -B ../build-kstars -DBUILD_TESTING=Off ../kstars -DCMAKE_BUILD_TYPE=Release || { echo "KStars failed"; exit 1; } }
 cd ../build-kstars
 make -j $JOBS || { echo "KStars failed"; exit 1; }
