@@ -12,6 +12,13 @@ ROOTDIR="$HOME/astro-soft-stable"
 
 JOBS=$(grep -c ^processor /proc/cpuinfo)
 
+# 64 bit systems need more memory for compilation
+if [ $(getconf LONG_BIT) -eq 64 ] && [ $(grep MemTotal < /proc/meminfo | cut -f 2 -d ':' | sed s/kB//) -lt 5000000 ]
+then
+	echo "Low memory limiting to JOBS=2"
+	JOBS=2
+fi
+
 [ ! -d "$ROOTDIR" ] && mkdir $ROOTDIR
 cd "$ROOTDIR"
 
