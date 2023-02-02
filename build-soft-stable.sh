@@ -3,10 +3,10 @@
 export CFLAGS="-march=native -w -Wno-psabi -D_FILE_OFFSET_BITS=64"
 export CXXFLAGS="-march=native -w -Wno-psabi -D_FILE_OFFSET_BITS=64"
 
-INDI_COMMIT="8ec6fd7001fd9a2c5ab8cc0c5c1a5add1b9afcc1"
-INDI_3RD_COMMIT="4d374c0df0e0fec7feed097f41a9356974a76f08"
+INDI_COMMIT="431869ffe400053fea79f227f80b175c593b3db8"
+INDI_3RD_COMMIT="6e677050e9ca39e0055ec29e140fac28998dd0f1"
 STELLAR_COMMIT="9013092ce5791514cf48a32b0b73923fe879eabf"
-KSTARS_COMMIT="origin/stable-3.6.2"
+KSTARS_COMMIT="origin/stable-3.6.3"
 
 ROOTDIR="$HOME/astro-soft-stable"
 
