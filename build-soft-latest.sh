@@ -17,45 +17,54 @@ fi
 [ ! -d "$ROOTDIR" ] && mkdir $ROOTDIR
 cd "$ROOTDIR"
 
+[ ! -d "libXISF" ] && git clone https://gitea.nouspiro.space/nou/libXISF.git
+cd libXISF
+git pull origin
+[ ! -d ../build-libXISF ] && { cmake -B ../build-libXISF ../libXISF -DCMAKE_BUILD_TYPE=Release || { echo "LibXISF configuration failed"; exit 1; } }
+cd ../build-libXISF
+make -j $JOBS || { echo "LibXISF compilation failed"; exit 1; }
+sudo make install || { echo "LibXISF installation failed"; exit 1; }
+
+cd "$ROOTDIR"
 [ ! -d "indi" ] && git clone --depth=1 https://github.com/indilib/indi.git
 cd indi
 git pull origin
-[ ! -d ../build-indi ] && { cmake -B ../build-indi ../indi -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release || { echo "INDI failed"; exit 1; } }
+[ ! -d ../build-indi ] && { cmake -B ../build-indi ../indi -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release || { echo "INDI configuration failed"; exit 1; } }
 cd ../build-indi
-make -j $JOBS || { echo "INDI failed"; exit 1; }
-sudo make install || { echo "INDI failed"; exit 1; }
+make -j $JOBS || { echo "INDI compilation failed"; exit 1; }
+sudo make install || { echo "INDI installation failed"; exit 1; }
 
 cd "$ROOTDIR"
 [ ! -d "indi-3rdparty" ] && git clone --depth=1 https://github.com/indilib/indi-3rdparty.git
 cd indi-3rdparty
 git pull origin
-[ ! -d ../build-indi-lib ] && { cmake -B ../build-indi-lib ../indi-3rdparty -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_LIBS=1 -DCMAKE_BUILD_TYPE=Release || { echo "INDI lib failed"; exit 1; } }
+[ ! -d ../build-indi-lib ] && { cmake -B ../build-indi-lib ../indi-3rdparty -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_LIBS=1 -DCMAKE_BUILD_TYPE=Release || { echo "INDI lib configuration failed"; exit 1; } }
 cd ../build-indi-lib
-make -j $JOBS || { echo "INDI lib failed"; exit 1; }
-sudo make install || { echo "INDI lib failed"; exit 1; }
+make -j $JOBS || { echo "INDI lib compilation failed"; exit 1; }
+sudo make install || { echo "INDI lib installation failed"; exit 1; }
 
-[ ! -d ../build-indi-3rdparty ] && { cmake -B ../build-indi-3rdparty ../indi-3rdparty -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release || { echo "INDI lib failed"; exit 1; } }
+[ ! -d ../build-indi-3rdparty ] && { cmake -B ../build-indi-3rdparty ../indi-3rdparty -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release || { echo "INDI lib configuration failed"; exit 1; } }
 cd ../build-indi-3rdparty
-make -j $JOBS || { echo "INDI 3rd-party failed"; exit 1; }
-sudo make install || { echo "INDI lib failed"; exit 1; }
+make -j $JOBS || { echo "INDI 3rd-party compilation failed"; exit 1; }
+sudo make install || { echo "INDI lib installation failed"; exit 1; }
 
 cd "$ROOTDIR"
 [ ! -d "stellarsolver" ] && git clone --depth=1 https://github.com/rlancaste/stellarsolver.git
 cd stellarsolver
 git pull origin
-[ ! -d ../build-stellarsolver ] && { cmake -B ../build-stellarsolver ../stellarsolver -DCMAKE_BUILD_TYPE=Release || { echo "Stellarsolfer failed"; exit 1; } }
+[ ! -d ../build-stellarsolver ] && { cmake -B ../build-stellarsolver ../stellarsolver -DCMAKE_BUILD_TYPE=Release || { echo "Stellarsolfer configuration failed"; exit 1; } }
 cd ../build-stellarsolver
-make -j $JOBS || { echo "Stellarsolver failed"; exit 1; }
-sudo make install || { echo "Stellarsolver failed"; exit 1; }
+make -j $JOBS || { echo "Stellarsolver compilation failed"; exit 1; }
+sudo make install || { echo "Stellarsolver installation failed"; exit 1; }
 
 cd "$ROOTDIR"
 [ ! -d "kstars" ] && git clone --depth=1 https://invent.kde.org/education/kstars.git
 cd kstars
 git pull origin
-[ ! -d ../build-kstars ] && { cmake -B ../build-kstars -DBUILD_TESTING=Off ../kstars -DCMAKE_BUILD_TYPE=Release || { echo "KStars failed"; exit 1; } }
+[ ! -d ../build-kstars ] && { cmake -B ../build-kstars -DBUILD_TESTING=Off ../kstars -DCMAKE_BUILD_TYPE=Release || { echo "KStars configuration failed"; exit 1; } }
 cd ../build-kstars
-make -j $JOBS || { echo "KStars failed"; exit 1; }
-sudo make install || { echo "KStars failed"; exit 1; }
+make -j $JOBS || { echo "KStars compilation failed"; exit 1; }
+sudo make install || { echo "KStars installation failed"; exit 1; }
 
 exit
 cd "$ROOTDIR"
