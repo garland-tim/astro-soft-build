@@ -26,7 +26,7 @@ cd "$ROOTDIR"
 [ ! -d "libXISF" ] && git clone https://gitea.nouspiro.space/nou/libXISF.git
 cd libXISF
 git fetch origin
-git checkout $LIBXISF_COMMIT
+git switch -d --discard-changes $LIBXISF_COMMIT
 [ ! -d ../build-libXISF ] && { cmake -B ../build-libXISF ../libXISF -DCMAKE_BUILD_TYPE=Release || { echo "LibXISF configuration failed"; exit 1; } }
 cd ../build-libXISF
 make -j $JOBS || { echo "LibXISF compilation failed"; exit 1; }
@@ -36,7 +36,7 @@ cd "$ROOTDIR"
 [ ! -d "indi" ] && git clone https://github.com/indilib/indi.git
 cd indi
 git fetch origin
-git checkout $INDI_COMMIT
+git switch -d --discard-changes $INDI_COMMIT
 [ ! -d ../build-indi ] && { cmake -B ../build-indi ../indi -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release || { echo "INDI configuration failed"; exit 1; } }
 cd ../build-indi
 make -j $JOBS || { echo "INDI compilation failed"; exit 1; }
@@ -46,7 +46,7 @@ cd "$ROOTDIR"
 [ ! -d "indi-3rdparty" ] && git clone https://github.com/indilib/indi-3rdparty.git
 cd indi-3rdparty
 git fetch origin
-git checkout $INDI_3RD_COMMIT
+git switch -d --discard-changes $INDI_3RD_COMMIT
 [ ! -d ../build-indi-lib ] && { cmake -B ../build-indi-lib ../indi-3rdparty -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_LIBS=1 -DCMAKE_BUILD_TYPE=Release || { echo "INDI lib configuration failed"; exit 1; } }
 cd ../build-indi-lib
 make -j $JOBS || { echo "INDI lib compilation failed"; exit 1; }
@@ -61,7 +61,7 @@ cd "$ROOTDIR"
 [ ! -d "stellarsolver" ] && git clone https://github.com/rlancaste/stellarsolver.git
 cd stellarsolver
 git fetch origin
-git checkout $STELLAR_COMMIT
+git switch -d --discard-changes $STELLAR_COMMIT
 [ ! -d ../build-stellarsolver ] && { cmake -B ../build-stellarsolver ../stellarsolver -DCMAKE_BUILD_TYPE=Release || { echo "Stellarsolfer configuration failed"; exit 1; } }
 cd ../build-stellarsolver
 make -j $JOBS || { echo "Stellarsolver compilation failed"; exit 1; }
@@ -71,7 +71,7 @@ cd "$ROOTDIR"
 [ ! -d "kstars" ] && git clone https://invent.kde.org/education/kstars.git
 cd kstars
 git fetch origin
-git checkout --detach $KSTARS_COMMIT
+git switch -d --discard-changes $KSTARS_COMMIT
 [ ! -d ../build-kstars ] && { cmake -B ../build-kstars -DBUILD_TESTING=Off ../kstars -DCMAKE_BUILD_TYPE=Release || { echo "KStars configuration failed"; exit 1; } }
 cd ../build-kstars
 make -j $JOBS || { echo "KStars compilation failed"; exit 1; }
