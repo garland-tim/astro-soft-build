@@ -77,6 +77,8 @@ cd ../build-kstars
 make -j $JOBS || { echo "KStars compilation failed"; exit 1; }
 sudo make install || { echo "KStars installation failed"; exit 1; }
 
+sudo ldconfig
+
 exit
 cd "$ROOTDIR"
 [ ! -d "phd2" ] && git clone --depth=1 https://github.com/OpenPHDGuiding/phd2.git
