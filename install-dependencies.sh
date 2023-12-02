@@ -6,4 +6,4 @@ sudo apt install libnova-dev libcfitsio-dev libusb-1.0-0-dev zlib1g-dev libgsl-d
         libeigen3-dev extra-cmake-modules libkf5plotting-dev libqt5svg5-dev libkf5xmlgui-dev libkf5kio-dev kinit-dev \
         libkf5newstuff-dev libkf5doctools-dev libkf5notifications-dev qtdeclarative5-dev libkf5crash-dev gettext libkf5notifyconfig-dev \
         wcslib-dev libqt5websockets5-dev xplanet xplanet-images qt5keychain-dev libsecret-1-dev breeze-icon-theme qml-module-qtquick-controls \
-        pkg-config libev-dev libqt5datavisualization5-dev
+        pkg-config libev-dev libqt5datavisualization5-dev libzmq3-dev
