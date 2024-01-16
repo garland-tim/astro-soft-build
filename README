@@ -12,3 +12,5 @@ which sometimes can fail to build or can be unstable.
 
 Beware that only one version can be installed at a time and during installation
 it overwrite previosly installed version.
+
+KStars NEED 64bit OS so make sure that you are running this on 64 bit Raspberry OS or alike. It will fail on 32 bit system
