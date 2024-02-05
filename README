@@ -7,6 +7,9 @@ Before first build install dependencies run `./install-dependencies.sh` to insta
 This need to be run only once.
 Then run `./build-soft-stable.sh` or `./build-soft-latest.sh`
 
+By default it clone sources to $HOME/astro-soft or $HOME/astro-soft-stable directory. You can change that by setting
+BUILD_DIR variable before. For example `BUILD_DIR="/home/username/I want to build here" ./build-soft-stable.sh`
+
 Stable install last stable version and it is recomended to use. Latest will build bleeding edge version from repository
 which sometimes can fail to build or can be unstable.
 

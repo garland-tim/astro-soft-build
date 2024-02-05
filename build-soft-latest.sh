@@ -4,7 +4,9 @@ export CFLAGS="-march=native -w -Wno-psabi -D_FILE_OFFSET_BITS=64"
 export CXXFLAGS="-march=native -w -Wno-psabi -D_FILE_OFFSET_BITS=64"
 
 CHECKOUT=0
-ROOTDIR="$HOME/astro-soft"
+# you can set custom BUILD_DIR
+BUILD_DIR=${BUILD_DIR:-$HOME}
+ROOTDIR="$BUILD_DIR/astro-soft"
 
 JOBS=$(grep -c ^processor /proc/cpuinfo)
 # 64 bit systems need more memory for compilation
@@ -14,7 +16,7 @@ then
 	JOBS=2
 fi
 
-[ ! -d "$ROOTDIR" ] && mkdir $ROOTDIR
+[ ! -d "$ROOTDIR" ] && mkdir -p "$ROOTDIR"
 cd "$ROOTDIR"
 
 [ ! -d "libXISF" ] && git clone https://gitea.nouspiro.space/nou/libXISF.git

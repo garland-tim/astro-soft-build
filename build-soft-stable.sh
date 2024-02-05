@@ -9,7 +9,9 @@ INDI_3RD_COMMIT="v2.0.6"
 STELLAR_COMMIT="e415e51d99224f239c24634519c030ef60969723"
 KSTARS_COMMIT="origin/stable-3.6.9"
 
-ROOTDIR="$HOME/astro-soft-stable"
+# you can set custom BUILD_DIR
+BUILD_DIR=${BUILD_DIR:-$HOME}
+ROOTDIR="$BUILD_DIR/astro-soft-stable"
 
 JOBS=$(grep -c ^processor /proc/cpuinfo)
 
@@ -20,7 +22,7 @@ then
 	JOBS=2
 fi
 
-[ ! -d "$ROOTDIR" ] && mkdir $ROOTDIR
+[ ! -d "$ROOTDIR" ] && mkdir -p "$ROOTDIR"
 cd "$ROOTDIR"
 
 [ ! -d "libXISF" ] && git clone https://gitea.nouspiro.space/nou/libXISF.git
