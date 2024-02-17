@@ -81,12 +81,15 @@ sudo make install || { echo "KStars installation failed"; exit 1; }
 
 sudo ldconfig
 
-exit
+[ "$1" != "phd2" ] && exit
+
 cd "$ROOTDIR"
-[ ! -d "phd2" ] && git clone --depth=1 https://github.com/OpenPHDGuiding/phd2.git
+[ ! -d "phd2" ] && git clone https://github.com/OpenPHDGuiding/phd2.git
 cd phd2
-[ $CHECKOUT == 1 ] && git pull origin
-[ ! -d ../build-phd2 ] && cmake -B ../build-phd2 ../phd2 -DCMAKE_BUILD_TYPE=Release || { echo "PHD2 failed"; exit 1; }
-cd ../build-phd2 || { echo "PHD2 failed"; exit 1; }
-make -j $JOBS || { echo "PHD2 failed"; exit 1; }
+git fetch origin
+git switch -d --discard-changes "v2.6.12"
+[ ! -d ../build-phd2 ] && cmake -B ../build-phd2 -DCMAKE_BUILD_TYPE=Release || { echo "PHD2 configuration failed"; exit 1; }
+cd ../build-phd2
+make -j $JOBS || { echo "PHD2 compilation failed"; exit 1; }
 sudo make install
+

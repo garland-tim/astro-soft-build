@@ -17,3 +17,6 @@ Beware that only one version can be installed at a time and during installation
 it overwrite previosly installed version.
 
 KStars NEED 64bit OS so make sure that you are running this on 64 bit Raspberry OS or alike. It will fail on 32 bit system
+
+You can build PHD2 2.6.12 by adding phd2 as argument for either of script. For example `./build-soft-stable.sh phd2`
+But before that you may need to install libwxgtk3.0-gtk3-dev or libwxgtk3.2-dev depending on distribution.
