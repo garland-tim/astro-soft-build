@@ -4,10 +4,10 @@ export CFLAGS="-march=native -w -Wno-psabi -D_FILE_OFFSET_BITS=64"
 export CXXFLAGS="-march=native -w -Wno-psabi -D_FILE_OFFSET_BITS=64"
 
 LIBXISF_COMMIT="v0.2.12"
-INDI_COMMIT="v2.0.7"
-INDI_3RD_COMMIT="v2.0.7"
+INDI_COMMIT="v2.0.8"
+INDI_3RD_COMMIT="v2.0.8"
 STELLAR_COMMIT="e415e51d99224f239c24634519c030ef60969723"
-KSTARS_COMMIT="origin/stable-3.7.0"
+KSTARS_COMMIT="origin/stable-3.7.1"
 
 # you can set custom BUILD_DIR
 BUILD_DIR=${BUILD_DIR:-$HOME}
