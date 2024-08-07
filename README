@@ -20,3 +20,8 @@ KStars NEED 64bit OS so make sure that you are running this on 64 bit Raspberry 
 
 You can build PHD2 2.6.12 by adding phd2 as argument for either of script. For example `./build-soft-stable.sh phd2`
 But before that you may need to install libwxgtk3.0-gtk3-dev or libwxgtk3.2-dev depending on distribution.
+
+To unistall any file installed by this scripts you may run this command inside build directory. This is by default
+`$HOME/astro-soft` or `$HOME/astro-soft-stable`. Normally there is no need to run it.
+
+`find . -name install_manifest.txt | sudo xargs rm`
